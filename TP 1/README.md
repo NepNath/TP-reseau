@@ -1,7 +1,7 @@
 # TP-reseau-1
 
 ## 🌞 Affichez les infos des cartes réseau de votre PC : 
-**commande** = `ipconfig` <br>
+**commande** = `ipconfig /all` <br>
 **Nom** : `Carte réseau sans fil Wi-Fi` <br>
 **Adresse Mac** : `50-5A-65-4F-B8-61` <br>
 **Adresse IP** : `10.33.50.152` <br>
