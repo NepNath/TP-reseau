@@ -44,3 +44,59 @@ depuis marcel (10.3.2.12):
 `64 bytes from 10.3.1.11: icmp_seq=2 ttl=63 time=1.83 ms`<br>
 `64 bytes from 10.3.1.11: icmp_seq=3 ttl=63 time=1.44 ms`<br>
 `64 bytes from 10.3.1.11: icmp_seq=4 ttl=63 time=2.42 ms`<br>
+
+
+### 🌞Donnez un accès internet à vos machines
+
+* **routes** : 
+```
+[nepnath@john network-scripts]$ sudo cat /etc/sysconfig/network-scripts/route-enp0s3
+10.3.2.0/24 via 10.3.1.254 dev enp0s3
+default via 10.3.1.254 dev enp0s3
+```
+```
+[nepnath@marcel ~]$ sudo cat /etc/sysconfig/network-scripts/route-enp0s3
+10.3.1.0/24 via 10.3.2.254 dev enp0s3
+default via 10.3.2.254 dev enp0s3
+```
+
+* **ping d'ip**
+
+```
+[nepnath@john ~]$ ping 8.8.8.8
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=115 time=11.2 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=115 time=11.4 ms
+```
+
+```
+[nepnath@marcel ~]$ ping 8.8.8.8
+PING 8.8.8.8 (8.8.8.8) 56(84) bytes of data.
+64 bytes from 8.8.8.8: icmp_seq=1 ttl=115 time=11.3 ms
+64 bytes from 8.8.8.8: icmp_seq=2 ttl=115 time=11.6 ms
+```
+
+* **ping de nom de domaine**
+
+```
+[nepnath@john ~]$ ping google.com
+PING google.com (172.217.20.206) 56(84) bytes of data.
+64 bytes from waw02s08-in-f14.1e100.net (172.217.20.206): icmp_seq=1 ttl=115 time=11.1 ms
+64 bytes from par10s50-in-f14.1e100.net (172.217.20.206): icmp_seq=2 ttl=115 time=10.9 ms
+^C
+--- google.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1001ms
+rtt min/avg/max/mdev = 10.942/11.042/11.143/0.100 ms
+```
+
+```
+[nepnath@marcel ~]$ ping google.com
+PING google.com (142.250.179.110) 56(84) bytes of data.
+64 bytes from par21s20-in-f14.1e100.net (142.250.179.110): icmp_seq=1 ttl=114 time=11.5 ms
+64 bytes from par21s20-in-f14.1e100.net (142.250.179.110): icmp_seq=2 ttl=114 time=11.4 ms
+^C
+--- google.com ping statistics ---
+2 packets transmitted, 2 received, 0% packet loss, time 1002ms
+rtt min/avg/max/mdev = 11.423/11.472/11.522/0.049 ms
+[nepnath@marcel ~]$
+```
